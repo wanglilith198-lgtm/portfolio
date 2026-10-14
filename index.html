@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>王李丽 | 新媒体全域运营 · 爆款内容操盘手 · 个人作品集</title>
+  <meta name="description" content="王李丽个人作品集网站：新媒体全域运营、爆款内容操盘手、电商转化与流量增长。涵盖个人号暴力涨粉、金融双平台破局、电商直播带货、梯媒广告分镜与AI视频剪辑。" />
+
+  <style>
+    /* ==========================================================================
+       1. 全局设计规范与基础变量 (Design System & Variables)
+       ========================================================================== */
+    :root {
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --ink-primary: #0f172a;
+      --ink-secondary: #475569;
+      --ink-muted: #94a3b8;
+      
+      --accent-blue: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-coral: #ff5438;
+      --accent-green: #10b981;
+      --accent-purple: #7c3aed;
+
+      --folder-cyan-front: rgba(34, 197, 235, 0.55);
+      --folder-cyan-back: #14b8a6;
+      --folder-shadow-color: rgba(6, 182, 212, 0.45);
+
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: SFMono-Regular, "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+
+      --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+      --ease-spring: cubic-bezier(0.34, 1.45, 0.64, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--bg-page);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--ink-primary);
+      background: var(--bg-page);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航栏 (Navbar) */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 36px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--ink-primary);
+    }
+
+    .nav-badge {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0891b2;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid #cffafe;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #0f172a;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .nav-contact-btn:hover {
+      background: var(--accent-blue);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       2. 第一屏：3D 拟物呼吸文件夹与核心战绩 (Hero Section)
+       ========================================================================== */
+    .folder-home-page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 110px 24px 60px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f1f5f9 100%);
+      isolation: isolate;
+    }
+
+    /* 背景大字水印 */
+    .folder-background-word {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(80px, 14vw, 210px);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: #e2e8f0;
+      opacity: 0.65;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+      z-index: 0;
+    }
+
+    /* 顶部核心战绩统计横幅 (Key Stats Strip) */
+    .stats-strip {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      max-width: 1080px;
+      margin-bottom: 24px;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .stat-number {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .stat-number.coral { color: #f43f5e; }
+    .stat-number.blue { color: #0284c7; }
+    .stat-number.green { color: #10b981; }
+    .stat-number.purple { color: #8b5cf6; }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    /* 3D 舞台容器 */
+    .folder-stage {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(1160px, 100%);
+      min-height: 560px;
+      perspective: 1400px;
+    }
+
+    /* 文件夹左右两侧半透明引导大箭头 */
+    .folder-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      color: #0284c7;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(2, 132, 199, 0.12);
+      transition: all 0.28s var(--ease-smooth);
+    }
+    .folder-nav-prev { left: calc(50% - 350px); }
+    .folder-nav-next { right: calc(50% - 350px); }
+
+    .folder-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.96);
+      color: #0369a1;
+      transform: translateY(-50%) scale(1.12);
+      box-shadow: 0 14px 34px rgba(2, 132, 199, 0.25);
+    }
+
+    /* 文件夹主体 */
+    .portfolio-folder {
+      --folder-shift-y: 20px;
+      --folder-radius: 34px;
+      --cards-open-drop: -72px;
+
+      --folder-front-rest: translateX(-50%) translateY(0) rotateX(0deg) scale(0.96);
+      --folder-front-open: translateX(-50%) translateY(32px) rotateX(-7.5deg) scale(0.9);
+
+      --folder-back-rest: translateX(-50%) translateY(0) scale(0.96);
+      --folder-back-open: translateX(-50%) translateY(30px) scale(0.9);
+
+      position: relative;
+      width: 530px;
+      height: 395px;
+      outline: none;
+      cursor: pointer;
+      isolation: isolate;
+      transform: translateY(var(--folder-shift-y));
+      transform-style: preserve-3d;
+    }
+
+    /* 底部柔和阴影：呼吸反相位变化 */
+    .portfolio-folder::after {
+      content: "";
+      position: absolute;
+      left: 110px;
+      right: 110px;
+      bottom: -18px;
+      height: 40px;
+      z-index: 1;
+      border-radius: 999px;
+      background: radial-gradient(ellipse at center, var(--folder-shadow-color) 0%, rgba(20, 184, 166, 0.28) 40%, transparent 72%);
+      filter: blur(16px);
+      opacity: 0.75;
+      transition: opacity 0.42s ease, transform 0.52s var(--ease-smooth);
+      animation: folder-shadow-float 2.8s ease-in-out infinite;
+    }
+
+    /* 文件夹壳层：上下呼吸浮动 */
+    .folder-shell {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      transform-style: preserve-3d;
+      animation: folder-shell-float 2.8s ease-in-out infinite;
+    }
+
+    /* 悬停或固定展开时停下呼吸保持展开张力 */
+    .portfolio-folder:is(.is-open, :hover)::after {
+      animation-play-state: paused;
+      opacity: 0.85;
+      transform: translateY(18px) scaleX(1.28);
+    }
+
+    /* 文件夹后盖 */
+    .folder-back {
+      position: absolute;
+      left: 50%;
+      bottom: 70px;
+      z-index: 6;
+      width: 380px;
+      height: 280px;
+      border-radius: var(--folder-radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%), var(--folder-cyan-back);
+      clip-path: path("M 30 0 H 124 C 140 0 151 6 162 18 L 188 47 C 199 59 213 66 232 66 H 342 C 361 66 372 78 372 97 V 246 C 372 264 360 276 342 276 H 30 C 12 276 0 264 0 246 V 30 C 0 12 12 0 30 0 Z");
+      box-shadow: 0 20px 35px rgba(20, 184, 166, 0.25), inset 0 1px rgba(255, 255, 255, 0.4);
+      transform: var(--folder-back-rest);
+      transition: transform 0.58s var(--ease-smooth), opacity 0.32s ease;
+    }
+
+    /* 文件夹前盖 (半透明毛玻璃质感) */
+    .folder-front {
+      position: absolute;
+      left: 50%;
+      bottom: 46px;
+      z-index: 16;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 396px;
+      height: 226px;
+      padding: 0 30px 26px;
+      border-radius: 38px;
+      background: linear-gradient(115deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 42%, rgba(255, 255, 255, 0.22) 100%), var(--folder-cyan-front);
+      backdrop-filter: blur(14px) saturate(1.45);
+      -webkit-backdrop-filter: blur(14px) saturate(1.45);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -16px 32px rgba(255, 255, 255, 0.2), 0 16px 30px rgba(14, 165, 233, 0.22);
+      transform: var(--folder-front-rest);
+      transform-origin: 50% 100%;
+      transition: transform 0.58s var(--ease-smooth), box-shadow 0.36s ease, opacity 0.32s ease;
+      overflow: hidden;
+    }
+
+    .folder-front::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .folder-title-box {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .folder-title {
+      color: #ffffff;
+      font-size: 29px;
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 8px rgba(0, 100, 140, 0.25);
+      user-select: none;
+    }
+
+    .folder-sub {
+      color: rgba(255, 255, 255, 0.9);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* 眼睛贴纸 (Googly Eyes with Mouse Tracking) */
+    .folder-sticker-eye {
+      position: absolute;
+      top: 18px;
+      left: 54px;
+      width: 82px;
+      height: 82px;
+      z-index: 3;
+      transform: rotate(-12deg);
+      pointer-events: none;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+
+    .folder-eye-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #f43f5e;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .folder-eye-socket {
+      position: absolute;
+      top: 24%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: inset 0 -1px 2px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .folder-eye-left { left: 15px; }
+    .folder-eye-right { right: 15px; }
+
+    .folder-pupil {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #111111;
+      transform: translate(calc(-50% + var(--eye-x, 0px)), calc(-50% + var(--eye-y, 0px)));
+      transition: transform 60ms linear;
+    }
+    .folder-pupil::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    /* 贴纸：爆款标签 */
+    .folder-sticker-idea {
+      position: absolute;
+      top: 58px;
+      right: 86px;
+      z-index: 3;
+      transform: rotate(14deg);
+      pointer-events: none;
+      background: #ffffff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 900;
+      color: #0284c7;
+      border: 1.5px solid #e0f2fe;
+      letter-spacing: 0.05em;
+    }
+
+    /* 交互圆钮 */
+    .folder-action-bubble {
+      position: relative;
+      z-index: 2;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 36% 28%, #ffffff, rgba(236, 252, 255, 0.7) 50%, #daf4f8), #ffffff;
+      box-shadow: inset 0 1px 2px #ffffff, inset 0 -6px 12px rgba(12, 132, 180, 0.15), 0 8px 16px rgba(20, 78, 112, 0.2);
+      display: grid;
+      place-items: center;
+    }
+    .folder-front-arrow {
+      position: relative;
+      width: 18px;
+      height: 12px;
+      color: #0284c7;
+      animation: folder-arrow-pulse 2.2s ease-in-out infinite;
+    }
+    .folder-front-arrow::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 0;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+    .folder-front-arrow::after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: 0;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    /* ==========================================================================
+       3. 文件夹内卡片栈 (Folder Card Stack & Fanning Physics)
+       ========================================================================== */
+    .folder-card-stack {
+      position: absolute;
+      left: 50%;
+      bottom: 186px;
+      z-index: 12;
+      width: 1px;
+      height: 1px;
+      pointer-events: none;
+      transform: translateX(-50%);
+      transform-style: preserve-3d;
+    }
+
+    .folder-card {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: var(--card-z, 1);
+      width: var(--card-w, 150px);
+      height: var(--card-h, 175px);
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+      cursor: pointer;
+      pointer-events: auto;
+      transform-origin: center bottom;
+      transform: translate(calc(-50% + var(--peek-x, 0px)), calc(var(--peek-y, 0px) + 70px)) rotate(var(--peek-r, 0deg)) scale(0.76);
+      transition: 
+        transform 0.52s var(--ease-smooth) var(--card-delay, 0ms),
+        box-shadow 0.42s ease var(--card-delay, 0ms),
+        filter 0.24s ease;
+      overflow: visible;
+    }
+
+    .folder-card-surface {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+      background: var(--card-color, #f1f5f9);
+      box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .folder-card-surface img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+
+    .folder-card-surface::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.72) 100%);
+      pointer-events: none;
+    }
+
+    .folder-card-badge {
+      position: absolute;
+      top: -14px;
+      left: 10px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 26, 38, 0.08);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 16px rgba(12, 31, 52, 0.1);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .folder-card-meta {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 3;
+      padding: 5px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 750;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* 展开态 */
+    .portfolio-folder:is(.is-open, :hover) .folder-back {
+      opacity: 0.96;
+      transform: var(--folder-back-open);
+    }
+
+    .portfolio-folder:is(.is-open, :hover) .folder-front {
+      opacity: 0.85;
+      transform: var(--folder-front-open);
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.8), inset 0 -18px 34px rgba(255, 255, 255, 0.2), 0 18px 32px rgba(14, 165, 233, 0.24);
+    }
+
+    .portfolio-folder:is(.is-open, :hover) .folder-card {
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.2);
+      transform: 
+        translate(calc(-50% + var(--open-x, 0px)), calc(var(--open-y, 0px) + var(--cards-open-drop) + var(--card-hover-y, 0px))) 
+        rotate(var(--open-r, 0deg)) 
+        scale(var(--card-hover-scale, var(--open-scale, 1)));
+    }
+
+    /* 鼠标悬停单张卡片或被焦点箭选中时：显著凸起聚焦 */
+    .portfolio-folder:is(.is-open, :hover) .folder-card:is(:hover, .is-focused) {
+      --card-hover-y: -22px !important;
+      --card-hover-scale: calc(var(--open-scale, 1) + 0.1) !important;
+      z-index: 35 !important;
+      filter: saturate(1.1) brightness(1.04);
+      box-shadow: 0 34px 70px rgba(15, 23, 42, 0.32);
+      transition-delay: 0ms !important;
+    }
+
+    .portfolio-folder:is(.is-open, :hover) .folder-card:is(:hover, .is-focused) img {
+      transform: scale(1.08);
+    }
+
+    .folder-hint-pill {
+      margin-top: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 20px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      user-select: none;
+      animation: pill-pulse 3s infinite ease-in-out;
+    }
+
+    /* ==========================================================================
+       4. 第二屏：实战案例深度画廊 (Selected Case Studies)
+       ========================================================================== */
+    .folder-project-room {
+      background: #ffffff;
+      padding: 80px 32px 100px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .clean-shell {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.85));
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 30px 80px rgba(18, 25, 32, 0.06);
+      padding: 70px 48px;
+      overflow: hidden;
+    }
+
+    .clean-hero-copy {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .clean-hero-note {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #0284c7;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid #bfdbfe;
+    }
+
+    .clean-hero-copy h2 {
+      font-size: clamp(30px, 4.5vw, 50px);
+      font-weight: 850;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 14px;
+    }
+
+    .clean-hero-copy p {
+      font-size: 15px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .clean-project-deck {
+      position: relative;
+      height: 290px;
+      margin: 36px auto;
+      width: 100%;
+      max-width: 1140px;
+    }
+
+    .clean-card-stage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+
+    .clean-project-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: var(--z, 1);
+      width: 168px;
+      height: 168px;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 20px 40px rgba(18, 25, 32, 0.12);
+      transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px))) rotate(var(--rot, 0deg));
+      transition: transform 0.26s var(--ease-smooth), box-shadow 0.26s ease, filter 0.26s ease;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .clean-project-card::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent, #0284c7);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85);
+    }
+
+    .clean-project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, transparent 35%, rgba(15, 23, 42, 0.75) 100%);
+      pointer-events: none;
+    }
+
+    .clean-project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+
+    .clean-card-caption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      color: #ffffff;
+    }
+
+    .clean-card-caption strong {
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .clean-card-caption span {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      opacity: 0.88;
+      text-transform: uppercase;
+    }
+
+    .clean-project-card:hover {
+      z-index: 30 !important;
+      transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px) - 14px)) rotate(var(--rot, 0deg)) scale(1.08);
+      box-shadow: 0 30px 60px rgba(18, 25, 32, 0.22);
+    }
+
+    .clean-project-card:hover img {
+      transform: scale(1.08);
+    }
+
+    /* ==========================================================================
+       5. 第三屏：视频剪辑与 AI 内容创证实战区 (Video & AI Reel Room)
+       ========================================================================== */
+    .video-room-section {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 90px 32px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-room-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .video-room-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .video-room-header h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .video-room-header p {
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      position: relative;
+      background: #1e293b;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s ease, border-color 0.3s;
+    }
+    .video-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 60px rgba(2, 132, 199, 0.25);
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .video-media-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      transition: opacity 0.3s;
+    }
+    .video-card:hover .video-media-wrap video {
+      opacity: 0.95;
+    }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(2, 132, 199, 0.9);
+      backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .video-card:hover .video-play-btn {
+      transform: translate(-50%, -50%) scale(1.12);
+      background: #38bdf8;
+    }
+
+    .video-card-body {
+      padding: 22px;
+    }
+
+    .video-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      color: #38bdf8;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .video-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .video-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       6. 悬停展开与查看大图/视频模态框 (Expanded Preview Modal with Prominent Arrows)
+       ========================================================================== */
+    .preview-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .preview-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .preview-modal-container {
+      position: relative;
+      width: min(1000px, 95vw);
+      max-height: 90vh;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      transform: scale(0.92) translateY(20px);
+      transition: transform 0.4s var(--ease-spring);
+    }
+
+    .preview-modal-overlay.active .preview-modal-container {
+      transform: scale(1) translateY(0);
+    }
+
+    /* 模态框左侧主图舞台 */
+    .preview-modal-media {
+      position: relative;
+      background: #090d16;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .preview-modal-media img {
+      width: 100%;
+      height: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      background: #090d16;
+      transition: opacity 0.24s ease, transform 0.28s var(--ease-smooth);
+    }
+
+    .preview-modal-media video {
+      width: 100%;
+      height: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      background: #000;
+    }
+
+    /* 模态框浮动大箭头：半透明毛玻璃质感，明显呼吸提示引导点击 */
+    .modal-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 25;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: all 0.24s ease;
+      animation: modal-arrow-guide-pulse 2.2s infinite ease-in-out;
+    }
+    .modal-nav-prev { left: 16px; }
+    .modal-nav-next { right: 16px; }
+
+    .modal-nav-arrow:hover {
+      background: rgba(255, 255, 255, 0.85);
+      color: #0284c7;
+      transform: translateY(-50%) scale(1.14);
+      box-shadow: 0 12px 32px rgba(2, 132, 199, 0.5);
+    }
+
+    @keyframes modal-arrow-guide-pulse {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        transform: translateY(-50%) scale(1);
+      }
+      50% {
+        box-shadow: 0 8px 30px rgba(56, 189, 248, 0.7);
+        border-color: rgba(56, 189, 248, 0.9);
+        transform: translateY(-50%) scale(1.06);
+      }
+    }
+
+    /* 模态框底部半透明指示药丸 */
+    .modal-indicator-pill {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 25;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      pointer-events: none;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      white-space: nowrap;
+    }
+    .modal-indicator-pill .indicator-tip {
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .preview-modal-body {
+      padding: 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+      overflow-y: auto;
+    }
+
+    .preview-modal-tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      color: #0284c7;
+      background: #f0f9ff;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      border: 1px solid #bae6fd;
+    }
+
+    .preview-modal-title {
+      font-size: 25px;
+      font-weight: 850;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .modal-thumbs-label {
+      font-size: 12px;
+      font-weight: 750;
+      color: #64748b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-thumbs-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      overflow-x: auto;
+      padding: 4px 2px;
+    }
+
+    .modal-thumb {
+      width: 68px;
+      height: 68px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.6;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      background: #f1f5f9;
+    }
+    .modal-thumb.active {
+      border-color: #0284c7;
+      opacity: 1;
+      transform: scale(1.08);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+    .modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-modal-desc {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+      white-space: pre-line;
+    }
+
+    .preview-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      display: grid;
+      place-items: center;
+      color: #475569;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10;
+    }
+    .preview-modal-close:hover {
+      background: #e2e8f0;
+      transform: scale(1.05);
+    }
+
+    /* ==========================================================================
+       7. 页面右下角常驻悬浮联系底栏 (Floating Contact Dock)
+       ========================================================================== */
+    .floating-contact-dock {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 990;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.3s var(--ease-smooth);
+    }
+    .floating-contact-dock:hover {
+      transform: translateY(-2px);
+    }
+
+    .dock-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .dock-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      color: #38bdf8;
+    }
+
+    .dock-btn-primary {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+    .dock-btn-primary:hover {
+      background: #0369a1;
+      color: #ffffff;
+    }
+
+    /* 微信二维码专属弹窗 */
+    .wechat-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(12px);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .wechat-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .wechat-card {
+      position: relative;
+      width: min(360px, 90vw);
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+      transform: scale(0.92);
+      transition: transform 0.3s var(--ease-spring);
+    }
+    .wechat-modal-overlay.active .wechat-card {
+      transform: scale(1);
+    }
+
+    .wechat-card img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      margin: 16px 0;
+    }
+
+    .wechat-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .wechat-card p {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* ==========================================================================
+       8. 关键帧动画 (Keyframes)
+       ========================================================================== */
+    @keyframes folder-shell-float {
+      0%, 100% {
+        transform: translateZ(0) scale(1);
+      }
+      50% {
+        transform: translate3d(0, -14px, 0) scale(1.018);
+      }
+    }
+
+    @keyframes folder-shadow-float {
+      0%, 100% {
+        opacity: 0.82;
+        transform: translateY(0) scaleX(1.12);
+      }
+      50% {
+        opacity: 0.44;
+        transform: translateY(14px) scaleX(0.72);
+      }
+    }
+
+    @keyframes folder-arrow-pulse {
+      0%, 100% {
+        opacity: 0.75;
+        transform: translateX(-2px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateX(3px);
+      }
+    }
+
+    @keyframes pill-pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    
+    /* ==========================================================================
+       防盗防护系统 (方案 2: 动态半透明斜向水印 + 方案 3: 防右键拖拽)
+       ========================================================================== */
+    .watermark-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 18;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='250' viewBox='0 0 420 250'%3E%3Ctext x='40' y='145' fill='rgba(15,23,42,0.11)' stroke='rgba(255,255,255,0.42)' stroke-width='0.5' font-size='13' font-family='sans-serif' font-weight='800' transform='rotate(-22 210 125)' letter-spacing='2'%3E王李丽求职内容 · 请勿盗用%3C/text%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 420px 250px;
+    }
+
+    .protect-toast {
+      position: fixed;
+      top: 76px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-24px);
+      z-index: 100000;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.45, 0.64, 1);
+    }
+    .protect-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .watermark-toggle-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #0284c7;
+      font-size: 11px;
+      font-weight: 750;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+    }
+    .watermark-toggle-badge:hover {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 900px) {
+      .folder-nav-prev { left: 8px; }
+      .folder-nav-next { right: 8px; }
+      .portfolio-folder {
+        transform: translateY(20px) scale(0.82);
+      }
+      .clean-project-deck {
+        overflow-x: auto;
+        height: 220px;
+        scrollbar-width: none;
+      }
+      .clean-project-deck::-webkit-scrollbar {
+        display: none;
+      }
+      .preview-modal-container {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .preview-modal-media {
+        min-height: 320px;
+      }
+      .floating-contact-dock {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-nav {
+        padding: 12px 20px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .portfolio-folder {
+        transform: translateY(10px) scale(0.66);
+      }
+      .clean-shell {
+        padding: 40px 20px;
+      }
+      .stats-strip {
+        gap: 8px;
+      }
+      .stat-pill {
+        padding: 6px 12px;
+      }
+      .stat-number {
+        font-size: 16px;
+      }
+      .folder-nav-btn {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 顶部导航条 -->
+  <header class="site-nav">
+    <div class="nav-brand">
+      <span class="nav-badge" style="background:#ecfdf5; color:#059669; border-color:#a7f3d0; font-size:11px; font-weight:700;">🛡️ 全站内容防盗保护中</span>
+      <span>王李丽 · LILI WANG</span>
+      <span class="nav-badge">新媒体爆款操盘手</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#intro" class="nav-link">核心战绩</a>
+      <a href="#gallery" class="nav-link">深度案例</a>
+      <a href="#video-room" class="nav-link">AI与视频创编</a>
+    </nav>
+    <button class="nav-contact-btn" id="openWechatBtnTop">
+      💬 扫码加微信
+    </button>
+  </header>
+
+  <!-- ========================================================================
+       SECTION 1: 3D 浮动呼吸文件夹 (6 大核心高光战绩)
+       ======================================================================== -->
+  <section class="folder-home-page" id="intro" aria-label="核心战绩与文件夹首页">
+    <div class="folder-background-word" aria-hidden="true">GROWTH</div>
+
+    <!-- 顶部数据战报条 -->
+    <div class="stats-strip">
+      <div class="stat-pill">
+        <span class="stat-number coral">7000+</span>
+        <span class="stat-label">个人号2周冷启净增粉</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-number blue">1.8w+</span>
+        <span class="stat-label">单篇最高点赞 (周产3篇万赞)</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-number green">65w+</span>
+        <span class="stat-label">金融红书月均曝光</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-number purple">+10%</span>
+        <span class="stat-label">直播停留时长提升</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-number coral">3万+</span>
+        <span class="stat-label">带货单日销售额突破</span>
+      </div>
+    </div>
+
+    <div class="folder-stage">
+      <!-- 文件夹左侧半透明引导大箭头 -->
+      <button class="folder-nav-btn folder-nav-prev" id="folderPrevBtn" aria-label="上一张卡片" title="切换上一张卡片">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <!-- 核心 3D 交互文件夹 -->
+      <div 
+        class="portfolio-folder" 
+        id="mainFolder" 
+        role="button" 
+        tabindex="0" 
+        aria-label="作品集文件夹（悬停或点击展开）"
+      >
+        <div class="folder-shell">
+          <!-- 文件夹后盖 -->
+          <div class="folder-back" aria-hidden="true"></div>
+
+          <!-- 卡片栈：由下方 JS 自动根据 6 大战绩数据渲染 -->
+          <div class="folder-card-stack" id="folderCardStack"></div>
+
+          <!-- 文件夹前盖 (半透明毛玻璃) -->
+          <div class="folder-front" aria-hidden="true">
+            <div class="folder-title-box">
+              <span class="folder-title">Lili Wang</span>
+              <span class="folder-sub">Viral Growth · 2026</span>
+            </div>
+
+            <!-- 跟踪鼠标的互动大眼仔贴纸 -->
+            <div class="folder-sticker-eye" id="eyeSticker" aria-hidden="true">
+              <div class="folder-eye-bg">HOT</div>
+              <div class="folder-eye-socket folder-eye-left">
+                <div class="folder-pupil" id="leftPupil"></div>
+              </div>
+              <div class="folder-eye-socket folder-eye-right">
+                <div class="folder-pupil" id="rightPupil"></div>
+              </div>
+            </div>
+
+            <!-- 爆款贴纸 -->
+            <div class="folder-sticker-idea">1.8W+ 爆款</div>
+
+            <!-- 互动圆钮 -->
+            <div class="folder-action-bubble">
+              <div class="folder-front-arrow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 文件夹右侧半透明引导大箭头 -->
+      <button class="folder-nav-btn folder-nav-next" id="folderNextBtn" aria-label="下一张卡片" title="切换下一张卡片">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <!-- 友好操作指引 -->
+    <div class="folder-hint-pill">
+      <span>✨ 悬停或点击文件夹展开卡片，可点击左右箭 ‹ › 切换高亮，点击卡片进入深度复盘</span>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 2: 作品画廊平铺展示区 (Selected Case Studies)
+       ======================================================================== -->
+  <section class="clean-page folder-project-room" id="gallery" aria-label="精选案例陈列室">
+    <div class="clean-shell">
+      <div class="clean-hero-copy">
+        <span class="clean-hero-note">Proof of Work · 案例深度复盘</span>
+        <h2>从选题策略到数据转化的完整链路</h2>
+        <p>每一份案例都源自真实业务实战，涵盖小红书/抖音双端爆款、带货主播沉浸式脚本、商业广告分镜与KOL媒介排期。</p>
+      </div>
+
+      <!-- 弧形排列的画廊卡片展台 -->
+      <div class="clean-project-deck" id="galleryDeck" aria-label="画廊卡片展台">
+        <div class="clean-card-stage" id="galleryStage"></div>
+      </div>
+
+      <div class="clean-hero-bottom" style="text-align:center; color:#64748b; font-size:14px; margin-top:28px;">
+        <p>💡 点击任意卡片，即可呼出高清大图、多图对比与操盘细节推导。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: 视频剪辑与 AI 内容创编实战区 (Video & AI Reel Room)
+       ======================================================================== -->
+  <section class="video-room-section" id="video-room" aria-label="视频剪辑与AI创编实战区">
+    <div class="video-room-header">
+      <span class="video-room-badge">Video Reel & AI Power</span>
+      <h2>视频剪辑与 AI 前沿内容创作</h2>
+      <p>具备敏锐的网感、剪辑节奏掌控力与前沿生成式 AI（AI 音乐生成、AI 动态动画、数字人口播）全流程应用能力。</p>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+      <!-- 视频卡片由 JS 自动渲染 -->
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       MODAL: 悬停/点击卡片放大详情弹窗 (Expanded Preview Modal with Prominent Arrows)
+       ======================================================================== -->
+  <div class="preview-modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="preview-modal-container">
+      <button class="preview-modal-close" id="modalCloseBtn" aria-label="关闭预览">&times;</button>
+      
+      <!-- 预览图或播放器区域 -->
+      <div class="preview-modal-media" id="modalMedia">
+        <!-- 弹窗内左切换大箭头 -->
+        <button class="modal-nav-arrow modal-nav-prev" id="modalImgPrevBtn" aria-label="上一张图片" title="上一张图片 (快捷键: ←)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <!-- 主图片展示容器 -->
+        <img id="modalMainImg" src="" alt="预览图" />
+        <div class="watermark-layer" id="modalWatermark" style="display:none;"></div>
+
+        <!-- 弹窗内右切换大箭头 -->
+        <button class="modal-nav-arrow modal-nav-next" id="modalImgNextBtn" aria-label="下一张图片" title="下一张图片 (快捷键: →)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <!-- 底部切换提示条 -->
+        <div class="modal-indicator-pill" id="modalImgIndicator">
+          <span id="modalImgCounter">1 / 1</span>
+          <span class="indicator-tip">· 点击 ‹ › 或左右键切换</span>
+        </div>
+      </div>
+
+      <!-- 详情说明区域 -->
+      <div class="preview-modal-body">
+        <div>
+          <span class="preview-modal-tag" id="modalTag">CASE STUDY</span>
+          <h3 class="preview-modal-title" id="modalTitle">Project Title</h3>
+          
+          <!-- 多图切换缩略图容器 (当案例有多张截图时自动出现) -->
+          <div id="modalThumbsContainer" style="display:none;">
+            <div class="modal-thumbs-label">📸 包含多项实战截图凭证（点击直接切换）：</div>
+            <div class="modal-thumbs-row" id="modalThumbs"></div>
+          </div>
+
+          <p class="preview-modal-desc" id="modalDesc"></p>
+        </div>
+        
+        <div>
+          <button class="nav-contact-btn" id="modalContactBtn" style="padding:10px 22px; font-size:13px;">
+            💬 联系沟通 / 预约面试 ↗
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: 微信二维码专属弹窗
+       ======================================================================== -->
+  <div class="wechat-modal-overlay" id="wechatModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="wechat-card">
+      <button class="preview-modal-close" id="wechatCloseBtn" aria-label="关闭">&times;</button>
+      <h3>王李丽 · 微信名片</h3>
+      <p>扫一扫二维码，随时高效沟通！</p>
+      <img src="./my_portfolio_files/16_info.txt个人微信二维码.jpg" alt="王李丽个人微信二维码" />
+      <div style="font-size:12px; color:#64748b; line-height:1.5;">
+        电话：<strong>147-0804-3361</strong><br/>
+        邮箱：<strong>3515874257@qq.com</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       常驻右下角悬浮联系底栏 (Floating Contact Dock)
+       ======================================================================== -->
+  <aside class="floating-contact-dock" aria-label="快速联系方式">
+    <button class="dock-btn dock-btn-primary" id="openWechatBtnDock">
+      💬 微信二维码
+    </button>
+    <a href="tel:14708043361" class="dock-btn">
+      📞 147-0804-3361
+    </a>
+    <a href="mailto:3515874257@qq.com" class="dock-btn">
+      ✉️ 邮箱
+    </a>
+  </aside>
+
+  <!-- ========================================================================
+       JAVASCRIPT: 数据配置、眼珠跟随算法、卡片交互与弹窗逻辑
+       ======================================================================== -->
+  <script>
+    let watermarkMode = "all";
+    /* -------------------------------------------------------------------------
+       【数据配置区域】—— 全量接入王李丽 25 项真实素材与战绩
+       ------------------------------------------------------------------------- */
+    
+    // 1. 文件夹内 6 大高光战绩卡片 (按要求更新封面图与排序)
+    const FOLDER_CARDS_DATA = [
+      {
+        id: "viral",
+        title: "2周暴力冷启 7000+",
+        tag: "冷启动·爆款操盘",
+        // 封面替换为：01_card_viral.png一周涨粉4000＋.jpg
+        image: "./my_portfolio_files/01_card_viral.png一周涨粉4000＋.jpg",
+        gallery: [
+          "./my_portfolio_files/01_card_viral.png一周涨粉4000＋.jpg",
+          "./my_portfolio_files/01_card_viral.png个人爆款成果图.jpg"
+        ],
+        color: "#f43f5e",
+        desc: "【2025暑期个人新媒体账号实战】\n• 独立冷启动个人新媒体账号，深度反推平台推荐算法机制，针对受众痛点提炼高点击率选题与视觉封面。\n• 成果：2周内暴力涨粉 7000，创下一周产出 3 篇万赞爆款、单篇最高点赞 1.8w、总点赞收藏超 8 万的现象级增粉记录！",
+        openX: "-250px", openY: "66px", openR: "-16deg", openScale: "1.05",
+        cardW: "150px", cardH: "180px", cardZ: 1,
+        peekX: "-62px", peekY: "-60px", peekR: "-6deg",
+        delay: "0ms"
+      },
+      {
+        id: "finance",
+        title: "金融严肃类双平台起号",
+        tag: "65W+月曝光破局",
+        // 封面替换为：02_card_finance.png抖音后台截图.png
+        image: "./my_portfolio_files/02_card_finance.png抖音后台截图.png",
+        gallery: [
+          "./my_portfolio_files/02_card_finance.png抖音后台截图.png",
+          "./my_portfolio_files/02_card_finance.png小红书后台截图.png",
+          "./my_portfolio_files/02_card_finance.png抖音主页截图.png",
+          "./my_portfolio_files/02_card_finance.png小红书主页截图.png"
+        ],
+        color: "#0284c7",
+        desc: "【上海温昶文化有限公司 · 新媒体运营】\n• 针对金融高合规、高门槛、内容枯燥难起号痛点，创新将枯燥金融条款转化为通俗趣味科普，打破流量壁垒。\n• 成果：小红书粉丝突破 1.1w（月均曝光超 65 万）；抖音粉丝达 8400（月均播放量突破 60 万），打造高价值严肃行业双平台获客矩阵！",
+        openX: "-150px", openY: "18px", openR: "-7deg", openScale: "1.07",
+        cardW: "154px", cardH: "168px", cardZ: 3,
+        peekX: "-32px", peekY: "-78px", peekR: "-3deg",
+        delay: "35ms"
+      },
+      {
+        id: "live",
+        title: "电商直播与话术闭环",
+        tag: "单日带货破3万",
+        image: "./my_portfolio_files/03_card_live.png直播场景.jpg",
+        gallery: [
+          "./my_portfolio_files/03_card_live.png直播场景.jpg",
+          "./my_portfolio_files/03_card_live.png协助视频拍摄.jpg"
+        ],
+        color: "#10b981",
+        desc: "【湖北楚寨发酵制品有限公司 · 带货主播】\n• 兼具主播端实战感与后台运营思维，负责食品类产品镜头前直播讲解与促单。\n• 搭建“家庭聚餐、日常加餐”为核心的沉浸式场景话术体系；实时根据弹幕评论调整讲解重点与促单节奏。\n• 成果：优化后用户平均停留时间显著提升 10%，驱动单天直播带货销售额突破 3 万元！",
+        openX: "-52px", openY: "-10px", openR: "-2deg", openScale: "1.07",
+        cardW: "146px", cardH: "148px", cardZ: 4,
+        peekX: "-4px", peekY: "-86px", peekR: "1deg",
+        delay: "70ms"
+      },
+      {
+        id: "storyboard",
+        title: "梯媒广告分镜与拍摄",
+        tag: "商业分镜·现场执导",
+        image: "./my_portfolio_files/04_card_storyboard.png拍摄现场花絮.jpg",
+        gallery: [
+          "./my_portfolio_files/04_card_storyboard.png拍摄现场花絮.jpg",
+          "./my_portfolio_files/04_card_storyboard.png沟通情况截图.png"
+        ],
+        color: "#f59e0b",
+        desc: "【梯媒广告项目落地实操】\n• 深度参与梯媒商业广告项目全流程，独立绘制视频视觉分镜脚本，清晰规划视觉构图、运镜与文案配合。\n• 作为核心桥梁紧密对接商业导演与拍摄制作团队，严格把控拍摄现场节点与镜头呈现，保障前期筹备按期高质量落地！",
+        openX: "60px", openY: "-4px", openR: "4deg", openScale: "1.07",
+        cardW: "164px", cardH: "174px", cardZ: 5,
+        peekX: "18px", peekY: "-78px", peekR: "3deg",
+        delay: "105ms"
+      },
+      {
+        id: "media",
+        title: "品牌冷启与媒介采买",
+        tag: "KOL建联与投放",
+        image: "./my_portfolio_files/05_card_media.png投放建联沟通截图.png",
+        gallery: [
+          "./my_portfolio_files/05_card_media.png投放建联沟通截图.png",
+          "./my_portfolio_files/11_gallery_kol.pngkoc媒介排放筛选截图.png"
+        ],
+        color: "#8b5cf6",
+        desc: "【洛阳乐宠健康科技有限公司 · 运营助理】\n• 统筹宠物新品牌上市前期市场发声规划，精准筛选垂类微信公众号与 KOL/KOC 资源进行品牌初宣投放对接。\n• 负责杂粮品牌新媒体矩阵内容排期与场景化图文文案，有效提升传统农业品牌的年轻化粘性与声量爆发！",
+        openX: "152px", openY: "24px", openR: "8deg", openScale: "1.06",
+        cardW: "142px", cardH: "130px", cardZ: 3,
+        peekX: "46px", peekY: "-62px", peekR: "6deg",
+        delay: "140ms"
+      },
+      {
+        id: "about",
+        title: "王李丽 · 综合画像",
+        tag: "全能操盘·大运会优秀",
+        image: "./my_portfolio_files/06_card_avatar.png个人形象照.jpg",
+        gallery: [
+          "./my_portfolio_files/06_card_avatar.png个人形象照.jpg",
+          "./my_portfolio_files/12_gallery_award.png大运会纪念证书.jpg",
+          "./my_portfolio_files/13_gallery_document.pngppt制作与交付.png"
+        ],
+        color: "#0f172a",
+        desc: "【王李丽 · 个人素养与履历概览】\n• 本科·人力资源管理 | 班级团支书 | 创新创业俱乐部部长 | 大运会优秀工作者称号。\n• 具备极强网感、算法逆向思维、镜头表现力与全流程商务执行力；高质高量交付 PPT 100+、文档 300+，善于跨部门团队组织统筹！",
+        openX: "232px", openY: "72px", openR: "12deg", openScale: "0.96",
+        cardW: "144px", cardH: "188px", cardZ: 2,
+        peekX: "66px", peekY: "-52px", peekR: "8deg",
+        delay: "175ms"
+      }
+    ];
+
+    // 2. 第二屏画廊区域 7 大案例卡片
+    const GALLERY_CARDS_DATA = [
+      {
+        title: "小红书爆文拆解",
+        subtitle: "VIRAL POST",
+        accent: "#f43f5e",
+        image: "./my_portfolio_files/07_gallery_note.png小红书爆文展示.png",
+        gallery: [
+          "./my_portfolio_files/07_gallery_note.png小红书爆文展示.png",
+          "./my_portfolio_files/07_gallery_note.png抖音爆文展示.png"
+        ],
+        x: "-390px", y: "14px", rot: "-8deg", z: 2,
+        desc: "【高点击视觉与痛点选题拆解】\n针对目标受众焦虑与核心诉求提炼封面文案，高反差对比图文与排版视觉，带来单篇数万级的自然搜索爆发与强互动转化！"
+      },
+      {
+        title: "抖音爆款内容展示",
+        subtitle: "DOUYIN MATRIX",
+        accent: "#06b6d4",
+        image: "./my_portfolio_files/07_gallery_note.png抖音爆文展示.png",
+        gallery: [
+          "./my_portfolio_files/07_gallery_note.png抖音爆文展示.png",
+          "./my_portfolio_files/07_gallery_note.png小红书爆文展示.png"
+        ],
+        x: "-260px", y: "-10px", rot: "6deg", z: 3,
+        desc: "【抖音泛知识矩阵爆款内容】\n将严肃行业门槛打磨为接地气的剧情与通俗解读，实现单月播放突破60万的爆款穿透力。"
+      },
+      {
+        title: "前3秒黄金脚本",
+        subtitle: "HOOK SCRIPT",
+        accent: "#f59e0b",
+        image: "./my_portfolio_files/08_gallery_script.png爆文脚本展示.png",
+        gallery: ["./my_portfolio_files/08_gallery_script.png爆文脚本展示.png"],
+        x: "-130px", y: "10px", rot: "-4deg", z: 4,
+        desc: "【爆文脚本文案结构化模型】\n前3秒黄金完播钩子 + 痛点层层递进 + 评论区情绪共鸣机制，彻底规避‘书面语陷阱’，让视频口语化且极具感染力！"
+      },
+      {
+        title: "直播话术对比文档",
+        subtitle: "LIVE FLOW DOC",
+        accent: "#10b981",
+        image: "./my_portfolio_files/09_gallery_live_flow.png话术优化对比文档展示.png",
+        gallery: ["./my_portfolio_files/09_gallery_live_flow.png话术优化对比文档展示.png"],
+        x: "0px", y: "-2px", rot: "3deg", z: 6,
+        desc: "【场景化话术体系搭建与优化】\n摒弃传统念参数式死板推销，重构真实生活场景脚本；根据弹幕与流失节点动态微调讲解节奏，助力用户停留时长提升10%！"
+      },
+      {
+        title: "梯媒分镜稿件原件",
+        subtitle: "STORYBOARD",
+        accent: "#8b5cf6",
+        image: "./my_portfolio_files/10_gallery_storyboard_full.png分镜脚本稿件.png",
+        gallery: [
+          "./my_portfolio_files/10_gallery_storyboard_full.png分镜脚本稿件.png",
+          "./my_portfolio_files/10_gallery_storyboard_full.png投放落地效果.png"
+        ],
+        x: "130px", y: "10px", rot: "-3deg", z: 7,
+        desc: "【手绘/绘制商业广告视觉分镜】\n逐帧规划视觉构图、运镜景别与台词配合，作为导演与制作团队的执行指南，保障商业片高质量按期拍摄落地！"
+      },
+      {
+        title: "梯媒大屏投放落地",
+        subtitle: "OFFLINE AD",
+        accent: "#0284c7",
+        image: "./my_portfolio_files/10_gallery_storyboard_full.png投放落地效果.png",
+        gallery: [
+          "./my_portfolio_files/10_gallery_storyboard_full.png投放落地效果.png",
+          "./my_portfolio_files/10_gallery_storyboard_full.png分镜脚本稿件.png"
+        ],
+        x: "260px", y: "-12px", rot: "-5deg", z: 5,
+        desc: "【梯媒广告大屏投放实地成效】\n从分镜纸面构想到最终高精落地梯媒大屏，展现出优秀的商业全案落地把控力。"
+      },
+      {
+        title: "高能文档PPT交付",
+        subtitle: "DELIVERY 300+",
+        accent: "#0f172a",
+        image: "./my_portfolio_files/13_gallery_document.pngppt制作与交付.png",
+        gallery: [
+          "./my_portfolio_files/13_gallery_document.pngppt制作与交付.png",
+          "./my_portfolio_files/12_gallery_award.png大运会纪念证书.jpg"
+        ],
+        x: "390px", y: "12px", rot: "7deg", z: 4,
+        desc: "【极强商务文档与看板交付素养】\n高质量交付 PPT 100+ 份、文档 300+ 份、Excel 230+ 份；具备复杂轮转与多方协调能力，获成都大运会优秀工作者证书！"
+      }
+    ];
+
+    // 3. 第三屏视频实战作品数据 (3 个 MP4 视频)
+    const VIDEO_REEL_DATA = [
+      {
+        title: "AI 歌曲制作 + AI 动画视觉效果",
+        tag: "AI 音乐 & 动态动画",
+        videoSrc: "./my_portfolio_files/17_剪辑作品AI歌曲制作加AI动画效果展示.mp4",
+        desc: "运用前沿生成式 AI 工具进行旋律与歌词编创，并结合 AI 动态视觉动画进行画面配合与转场调优，展现前瞻的内容生成与敏锐网感！"
+      },
+      {
+        title: "AI 数字人口播与动画交互设计",
+        tag: "AI 口播 & 动效包装",
+        videoSrc: "./my_portfolio_files/17_剪辑作品展示AI口播以及AI动画设计.mp4",
+        desc: "设计数字人高保真口播短视频，融入动态字幕、关键帧微动效与沉浸式声画配合，探索高产能、高转化的 AI 短视频矩阵打法。"
+      },
+      {
+        title: "爆款营销号剪辑与节奏把控",
+        tag: "营销号剪辑 & 爆点把控",
+        videoSrc: "./my_portfolio_files/17_剪辑作品展示营销号剪辑展示.mp4",
+        desc: "熟练掌握短视频黄金前3秒抓人技巧、高密度信息流卡点剪辑与情绪高潮调优，打造极具穿透力的商业营销短视频。"
+      }
+    ];
+
+    /* -------------------------------------------------------------------------
+       【渲染引擎】
+       ------------------------------------------------------------------------- */
+    const folderStack = document.getElementById("folderCardStack");
+    const galleryStage = document.getElementById("galleryStage");
+    const videoGrid = document.getElementById("videoGrid");
+    let currentCardIndex = 0;
+
+    // 1. 渲染文件夹 6 张卡片
+    function renderFolderCards() {
+      folderStack.innerHTML = "";
+      FOLDER_CARDS_DATA.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "folder-card";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("data-index", index);
+        card.setAttribute("aria-label", `查看战绩 ${item.title}`);
+        
+        card.style.setProperty("--open-x", item.openX);
+        card.style.setProperty("--open-y", item.openY);
+        card.style.setProperty("--open-r", item.openR);
+        card.style.setProperty("--open-scale", item.openScale);
+        card.style.setProperty("--card-w", item.cardW);
+        card.style.setProperty("--card-h", item.cardH);
+        card.style.setProperty("--card-color", item.color);
+        card.style.setProperty("--card-delay", item.delay);
+        card.style.setProperty("--card-z", item.cardZ);
+        card.style.setProperty("--peek-x", item.peekX);
+        card.style.setProperty("--peek-y", item.peekY);
+        card.style.setProperty("--peek-r", item.peekR);
+
+        card.innerHTML = `
+          <span class="folder-card-badge">${item.tag}</span>
+          <div class="folder-card-surface">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" />
+            <div class="watermark-layer"></div>
+            <div class="folder-card-meta">${item.title}</div>
+          </div>
+        `;
+
+        card.addEventListener("click", (e) => {
+          e.stopPropagation();
+          currentCardIndex = index;
+          openModal({
+            title: item.title,
+            tag: item.tag,
+            desc: item.desc,
+            gallery: item.gallery || [item.image]
+          });
+        });
+
+        folderStack.appendChild(card);
+      });
+    }
+
+    // 2. 渲染画廊甲板 7 张卡片
+    function renderGalleryCards() {
+      galleryStage.innerHTML = "";
+      GALLERY_CARDS_DATA.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "clean-project-card";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        
+        card.style.setProperty("--x", item.x);
+        card.style.setProperty("--y", item.y);
+        card.style.setProperty("--rot", item.rot);
+        card.style.setProperty("--z", item.z);
+        card.style.setProperty("--accent", item.accent);
+
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <div class="watermark-layer"></div>
+          <div class="clean-card-caption">
+            <strong>${item.title}</strong>
+            <span>${item.subtitle}</span>
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          openModal({
+            title: item.title,
+            tag: item.subtitle,
+            desc: item.desc,
+            gallery: item.gallery || [item.image]
+          });
+        });
+
+        galleryStage.appendChild(card);
+      });
+    }
+
+    // 3. 渲染视频剪辑作品
+    function renderVideoCards() {
+      videoGrid.innerHTML = "";
+      VIDEO_REEL_DATA.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "video-card";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+
+        card.innerHTML = `
+          <div class="video-media-wrap">
+            <video src="${item.videoSrc}" preload="metadata" muted playsinline></video>
+            <div class="video-play-btn">▶</div>
+          </div>
+          <div class="video-card-body">
+            <span class="video-tag">${item.tag}</span>
+            <h3 class="video-title">${item.title}</h3>
+            <p class="video-desc">${item.desc}</p>
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          openVideoModal(item);
+        });
+
+        videoGrid.appendChild(card);
+      });
+    }
+
+    renderFolderCards();
+    renderGalleryCards();
+    renderVideoCards();
+
+    /* -------------------------------------------------------------------------
+       【第一屏：文件夹左右箭高亮导航逻辑】
+       ------------------------------------------------------------------------- */
+    const folder = document.getElementById("mainFolder");
+    const folderPrevBtn = document.getElementById("folderPrevBtn");
+    const folderNextBtn = document.getElementById("folderNextBtn");
+
+    function highlightCard(idx) {
+      folder.classList.add("is-open");
+      const cards = folderStack.querySelectorAll(".folder-card");
+      cards.forEach((c, i) => {
+        if (i === idx) {
+          c.classList.add("is-focused");
+        } else {
+          c.classList.remove("is-focused");
+        }
+      });
+    }
+
+    folderPrevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentCardIndex = (currentCardIndex - 1 + FOLDER_CARDS_DATA.length) % FOLDER_CARDS_DATA.length;
+      highlightCard(currentCardIndex);
+    });
+
+    folderNextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentCardIndex = (currentCardIndex + 1) % FOLDER_CARDS_DATA.length;
+      highlightCard(currentCardIndex);
+    });
+
+    folder.addEventListener("click", (e) => {
+      if (e.target.closest(".folder-card")) return;
+      folder.classList.toggle("is-open");
+      if (!folder.classList.contains("is-open")) {
+        folderStack.querySelectorAll(".folder-card").forEach(c => c.classList.remove("is-focused"));
+      }
+    });
+
+    folder.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        folder.classList.toggle("is-open");
+      }
+    });
+
+    /* -------------------------------------------------------------------------
+       【眼睛贴纸跟随鼠标算法 (Interactive Googly Eyes)】
+       ------------------------------------------------------------------------- */
+    const eyeSticker = document.getElementById("eyeSticker");
+    const leftPupil = document.getElementById("leftPupil");
+    const rightPupil = document.getElementById("rightPupil");
+    const heroSection = document.getElementById("intro");
+
+    heroSection.addEventListener("pointermove", (e) => {
+      if (!eyeSticker) return;
+      const rect = eyeSticker.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const dx = e.clientX - centerX;
+      const dy = e.clientY - centerY;
+      const dist = Math.hypot(dx, dy) || 1;
+      
+      const maxRadius = 4.5;
+      const moveX = (dx / dist) * Math.min(dist * 0.08, maxRadius);
+      const moveY = (dy / dist) * Math.min(dist * 0.08, maxRadius);
+
+      leftPupil.style.setProperty("--eye-x", `${moveX}px`);
+      leftPupil.style.setProperty("--eye-y", `${moveY}px`);
+      rightPupil.style.setProperty("--eye-x", `${moveX}px`);
+      rightPupil.style.setProperty("--eye-y", `${moveY}px`);
+    });
+
+    heroSection.addEventListener("pointerleave", () => {
+      leftPupil.style.setProperty("--eye-x", `0px`);
+      leftPupil.style.setProperty("--eye-y", `0px`);
+      rightPupil.style.setProperty("--eye-x", `0px`);
+      rightPupil.style.setProperty("--eye-y", `0px`);
+    });
+
+    /* -------------------------------------------------------------------------
+       【大图/多图详情模态框 (Preview Modal with Prominent Navigation Arrows)】
+       ------------------------------------------------------------------------- */
+    const modal = document.getElementById("previewModal");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalTag = document.getElementById("modalTag");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalMedia = document.getElementById("modalMedia");
+    const modalMainImg = document.getElementById("modalMainImg");
+    const modalThumbsContainer = document.getElementById("modalThumbsContainer");
+    const modalThumbs = document.getElementById("modalThumbs");
+    const modalImgPrevBtn = document.getElementById("modalImgPrevBtn");
+    const modalImgNextBtn = document.getElementById("modalImgNextBtn");
+    const modalImgIndicator = document.getElementById("modalImgIndicator");
+    const modalImgCounter = document.getElementById("modalImgCounter");
+    const modalContactBtn = document.getElementById("modalContactBtn");
+
+    let currentGallery = [];
+    let currentGalleryIndex = 0;
+
+    function updateModalImage(idx) {
+      if (!currentGallery.length) return;
+      currentGalleryIndex = (idx + currentGallery.length) % currentGallery.length;
+      
+      // 平滑淡入过渡
+      modalMainImg.style.opacity = "0.3";
+      modalMainImg.style.transform = "scale(0.98)";
+      setTimeout(() => {
+        modalMainImg.src = currentGallery[currentGalleryIndex];
+        modalMainImg.style.opacity = "1";
+        modalMainImg.style.transform = "scale(1)";
+      }, 100);
+
+      // 更新指示标签
+      modalImgCounter.textContent = `${currentGalleryIndex + 1} / ${currentGallery.length}`;
+
+      // 缩略图高亮同步
+      const thumbs = modalThumbs.querySelectorAll(".modal-thumb");
+      thumbs.forEach((t, i) => {
+        if (i === currentGalleryIndex) {
+          t.classList.add("active");
+          t.scrollIntoView({ behavior: "smooth", inline: "nearest" });
+        } else {
+          t.classList.remove("active");
+        }
+      });
+    }
+
+    function openModal(data) {
+      modalTitle.textContent = data.title;
+      modalTag.textContent = data.tag || "CASE STUDY";
+      modalDesc.textContent = data.desc || "";
+
+      currentGallery = data.gallery && data.gallery.length ? data.gallery : [data.image];
+      currentGalleryIndex = 0;
+
+      // 确保主展示图与导航箭头显示
+      modalMainImg.style.display = "block";
+      const existingVideo = modalMedia.querySelector("video");
+      if (existingVideo) existingVideo.remove();
+
+      modalThumbs.innerHTML = "";
+
+      if (currentGallery.length > 1) {
+        modalImgPrevBtn.style.display = "grid";
+        modalImgNextBtn.style.display = "grid";
+        modalImgIndicator.style.display = "inline-flex";
+        modalThumbsContainer.style.display = "block";
+
+        currentGallery.forEach((imgSrc, idx) => {
+          const thumb = document.createElement("div");
+          thumb.className = `modal-thumb${idx === 0 ? " active" : ""}`;
+          thumb.innerHTML = `<img src="${imgSrc}" alt="thumb" />`;
+          thumb.addEventListener("click", () => {
+            updateModalImage(idx);
+          });
+          modalThumbs.appendChild(thumb);
+        });
+      } else {
+        // 单图情况隐藏切换箭与计数器
+        modalImgPrevBtn.style.display = "none";
+        modalImgNextBtn.style.display = "none";
+        modalImgIndicator.style.display = "none";
+        modalThumbsContainer.style.display = "none";
+      }
+
+      updateModalImage(0);
+      const modalWatermark = document.getElementById("modalWatermark");
+      if (modalWatermark) {
+        modalWatermark.style.display = "block";
+      }
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    // 模态框箭头点击切换
+    modalImgPrevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      updateModalImage(currentGalleryIndex - 1);
+    });
+
+    modalImgNextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      updateModalImage(currentGalleryIndex + 1);
+    });
+
+    // 视频弹窗播放器
+    function openVideoModal(data) {
+      modalTitle.textContent = data.title;
+      modalTag.textContent = data.tag;
+      modalDesc.textContent = data.desc;
+      
+      modalImgPrevBtn.style.display = "none";
+      modalImgNextBtn.style.display = "none";
+      modalImgIndicator.style.display = "none";
+      modalThumbsContainer.style.display = "none";
+      modalMainImg.style.display = "none";
+
+      const existingVideo = modalMedia.querySelector("video");
+      if (existingVideo) existingVideo.remove();
+
+      const video = document.createElement("video");
+      video.src = data.videoSrc;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      modalMedia.appendChild(video);
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      const vid = modalMedia.querySelector("video");
+      if (vid) {
+        vid.pause();
+        vid.remove();
+      }
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    modalCloseBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (modal.classList.contains("active")) {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft" && currentGallery.length > 1) updateModalImage(currentGalleryIndex - 1);
+        if (e.key === "ArrowRight" && currentGallery.length > 1) updateModalImage(currentGalleryIndex + 1);
+      }
+      if (wechatModal.classList.contains("active")) {
+        if (e.key === "Escape") closeWechatModal();
+      }
+    });
+
+    /* -------------------------------------------------------------------------
+       【微信二维码弹窗交互】
+       ------------------------------------------------------------------------- */
+    const wechatModal = document.getElementById("wechatModal");
+    const wechatCloseBtn = document.getElementById("wechatCloseBtn");
+    const openWechatBtnTop = document.getElementById("openWechatBtnTop");
+    const openWechatBtnDock = document.getElementById("openWechatBtnDock");
+
+    function openWechatModal() {
+      wechatModal.classList.add("active");
+      wechatModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeWechatModal() {
+      wechatModal.classList.remove("active");
+      wechatModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    openWechatBtnTop.addEventListener("click", openWechatModal);
+    openWechatBtnDock.addEventListener("click", openWechatModal);
+    modalContactBtn.addEventListener("click", () => {
+      closeModal();
+      setTimeout(openWechatModal, 150);
+    });
+
+    wechatCloseBtn.addEventListener("click", closeWechatModal);
+    wechatModal.addEventListener("click", (e) => {
+      if (e.target === wechatModal) closeWechatModal();
+    });
+  
+    /* -------------------------------------------------------------------------
+       【防盗系统：方案 2 动态水印控制 + 方案 3 禁用右键/拖拽】
+       ------------------------------------------------------------------------- */
+    const watermarkToggleBtn = document.getElementById("watermarkToggleBtn");
+
+    function updateWatermarkState() {
+      if (watermarkMode === "demo") {
+        watermarkToggleBtn.innerHTML = "🛡️ 水印效果: 仅第1张试看 (点击全量)";
+      } else if (watermarkMode === "all") {
+        watermarkToggleBtn.innerHTML = "🛡️ 水印效果: 全量已开启 (点击关闭)";
+      } else {
+        watermarkToggleBtn.innerHTML = "🛡️ 水印效果: 已关闭 (点击开启)";
+      }
+      renderFolderCards();
+    }
+
+    if (watermarkToggleBtn) {
+      watermarkToggleBtn.addEventListener("click", () => {
+        if (watermarkMode === "demo") watermarkMode = "all";
+        else if (watermarkMode === "all") watermarkMode = "off";
+        else watermarkMode = "demo";
+        updateWatermarkState();
+        showToast(`水印状态已切换为: ${watermarkMode === "all" ? "全量开启" : watermarkMode === "demo" ? "仅第1张试看" : "已关闭"}`);
+      });
+    }
+
+    function showToast(msg) {
+      let toast = document.getElementById("protectToast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "protectToast";
+        toast.className = "protect-toast";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+    // 方案 3: 禁用右键另存为图片
+    document.addEventListener("contextmenu", (e) => {
+      if (e.target.tagName === "IMG" || e.target.closest(".preview-modal-media") || e.target.closest(".folder-card") || e.target.closest(".clean-project-card")) {
+        e.preventDefault();
+        showToast("🛡️ 王李丽求职作品保护：已开启防盗保护，禁止另存图片");
+      }
+    });
+
+    // 方案 3: 禁用拖拽图片保存
+    document.addEventListener("dragstart", (e) => {
+      if (e.target.tagName === "IMG") {
+        e.preventDefault();
+        showToast("🛡️ 作品受版权保护，禁止拖拽保存");
+      }
+    });
+
+  </script>
+</body>
+</html>
